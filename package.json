@@ -1,0 +1,30 @@
+{
+  "name": "Modelo-CRUD-NodeJs",
+  "version": "1.0.0",
+  "description": "Modelo crud desarrrollado en NodeJs para conexiones con MYSQL",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jairvelazquez/Modelo-CRUD-NodeJs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jairvelazquez/Modelo-CRUD-NodeJs/issues"
+  },
+  "homepage": "https://github.com/jairvelazquez/Modelo-CRUD-NodeJs#readme",
+  "dependencies": {
+    "ejs": "^3.1.3",
+    "express": "^4.17.1",
+    "express-myconnection": "^1.0.4",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
