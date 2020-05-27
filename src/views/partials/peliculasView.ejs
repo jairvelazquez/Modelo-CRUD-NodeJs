@@ -1,16 +1,74 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Peliculas</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-      <nav class=""></nav>
-  </body>
-</html>
+<%- include('partials/header') -%>
+
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-7">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>n*</th>
+                        <th>Nombre</th>
+                        <th>Fecha estreno</th>
+                        <th>Sinopsis</th>
+                        <th>Casa</th>
+                        <th>id genero</th>
+                        <th>Ranking Caliente</th>
+                        <th>Ranking Estable</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% id(data) {%>
+                        <% for(var i = 0; i < data.length; i++){ %>
+                            <tr>
+                                <td><%= (i + 1) %></td>
+                                <td><%= data[i].nombre %></td>
+                                <td><%= data[i].fecha_estreno %></td>
+                                <td><%= data[i].sinopsis %></td>
+                                <td><%= data[i].casa_productora %></td>
+                                <td><%= data[i].ranking_estable %></td>
+                                <td><%= data[i].ranking_caliente %></td>
+                                <td><%= data[i].id_genero %></td>
+                                <td>
+                                <a href="/delete/<%= data[i].id%>" class="btn btn-danger">Borrar</a>
+                                <a href="/update/<%= data[i].id%>" class="btn btn-info">Actualizar</a>
+                                </td>
+                            </tr>
+                        <%}%>
+                    <%}%>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="date" name="fechaEstreno" placeholder="Fecha de estreno" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="sinopsis" placeholder="Sinopsis" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="casa_productora" placeholder="Casa productora" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="id" placeholder="Id Genero" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="rankingC" placeholder="Ranking caliente" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="rankingE" placeholder="Ranking estable" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </form>
+                </div>
+            </div> 
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
