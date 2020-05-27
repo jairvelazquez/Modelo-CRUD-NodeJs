@@ -1,4 +1,4 @@
-<% include partials/_header %>
+<%- include('partials/_header'); -%>
 
 <div class="container mt-5">
   <div class="row">
@@ -6,16 +6,16 @@
       <div class="card-body">
         <form action="/update/<%= data.id %>" method="POST">
           <div class="form-group">
-            <input type="text" name="nombre" value="<%= data.name%>" placeholder="Nombre" class="form-control" autofocus>
+            <input type="text" name="nombre" value="<%= data.nombre%>" placeholder="Nombre" class="form-control" autofocus>
           </div>
           <div class="form-group">
-            <input type="text" name="apellidos" value="<%= data.lname%>" placeholder="Apellidos" class="form-control">
+            <input type="text" name="apellidos" value="<%= data.apellidos%>" placeholder="Apellidos" class="form-control">
           </div>
           <div class="form-group">
-            <input type="text" name="sexo" value="<%= data.sex%>" placeholder="Sexo" class="form-control">
+            <input type="text" name="sexo" value="<%= data.sexo%>" placeholder="Sexo" class="form-control">
           </div>
           <div class="form-group">
-            <input type="text" name="fecha_nacimiento" value="<%= data.birth%>" placeholder="Nacimiento" class="form-control">
+            <input type="text" name="fecha_nacimiento" value="<%= data.fecha_nacimiento%>" placeholder="Nacimiento" class="form-control">
           </div>
 
           <button type="submit" class="btn btn-primary">
@@ -27,4 +27,4 @@
   </div>
 </div>
 
-<% include partials/_footer %>
+<%- include('partials/_footer'); -%>
