@@ -6,17 +6,20 @@
       <div class="card-body">
         <form action="/update/<%= data.id %>" method="POST">
           <div class="form-group">
-            <input type="text" name="name" value="<%= data.name%>" placeholder="Name" class="form-control" autofocus>
+            <input type="text" name="nombre" value="<%= data.name%>" placeholder="Nombre" class="form-control" autofocus>
           </div>
           <div class="form-group">
-            <input type="text" name="address" value="<%= data.address%>" placeholder="Address" class="form-control">
+            <input type="text" name="apellidos" value="<%= data.lname%>" placeholder="Apellidos" class="form-control">
           </div>
           <div class="form-group">
-            <input type="text" name="phone" value="<%= data.phone%>" placeholder="Phone" class="form-control">
+            <input type="text" name="sexo" value="<%= data.sex%>" placeholder="Sexo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="fecha_nacimiento" value="<%= data.birth%>" placeholder="Nacimiento" class="form-control">
           </div>
 
           <button type="submit" class="btn btn-primary">
-            save customer
+            Guardar cambios
           </button>
         </form>
       </div>
