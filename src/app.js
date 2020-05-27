@@ -6,8 +6,9 @@ const express = require("express"),
 
 const app = express();
 /*importing routes*/
-
 const usuarioRoutes = require("./routes/usuarios");
+const personalidadRoutes = require("./routes/personalidad");
+const peliculaRoutes = require ("./routes/peliculas");
 
 // settings
 app.set("port", process.env.PORT || 3000);
@@ -34,7 +35,8 @@ app.use(express.urlencoded({ extended: false }));
 
 //routes
 app.use("/", usuarioRoutes);
-
+app.use("/peliculas", usuarioRoutes);
+app.use("/personalidad", usuarioRoutes);
 // static files
 app.use(express.static(path.join(__dirname, "public")));
 
