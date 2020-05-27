@@ -22,8 +22,8 @@ app.use(
     {
       host: "localhost",
       user: "root",
-      password: "password",
-      port: 3309,
+      password: "gola7979",
+      port: 3306,
       database: "cinecut",
     },
     "single"
