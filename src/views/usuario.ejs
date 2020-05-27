@@ -1,0 +1,24 @@
+<%- include('partials/_header'); -%>
+
+<div class="container-fluid mt-4">
+    <h2>
+        Identificarse
+    </h2>
+    <form>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="Nombre">Nombre de usuario</label>
+                    <input type="email" class="form-control" id="Nombre" placeholder="Ingresa tu usuario">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Contraseña</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Acceder</button>
+                <button type="submit" class="btn btn-primary">Nueva Cuenta</button>
+    </form>
+</div>
+<div class="container-fluid">
+    <%- include('partials/_footer'); -%>
+</div>
