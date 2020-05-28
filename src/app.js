@@ -5,10 +5,11 @@ const express = require("express"),
   myConnection = require("express-myconnection");
 
 const app = express();
-/*
-// importing routes
-const customerRoutes = require("./routes/customer");
-*/
+/*importing routes*/
+const usuarioRoutes = require("./routes/usuarios");
+const personalidadRoutes = require("./routes/personalidad");
+const peliculaRoutes = require ("./routes/peliculas");
+
 // settings
 app.set("port", process.env.PORT || 3000);
 app.set("views", path.join(__dirname, "views"));
@@ -22,8 +23,8 @@ app.use(
     {
       host: "localhost",
       user: "root",
-      password: "gola7979",
-      port: 3306,
+      password: "password",
+      port: 3309,
       database: "cinecut",
     },
     "single"
@@ -32,10 +33,10 @@ app.use(
 
 app.use(express.urlencoded({ extended: false }));
 
-// routes
-app.use("/", customersRouter);
-
-
+//routes
+app.use("/", usuarioRoutes);
+app.use("/peliculas", peliculaRoutes);
+app.use("/personalidad", personalidadRoutes);
 // static files
 app.use(express.static(path.join(__dirname, "public")));
 
