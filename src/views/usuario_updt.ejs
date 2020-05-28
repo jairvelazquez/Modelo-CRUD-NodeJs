@@ -1,0 +1,45 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-5 offset-md-3 card">
+      <div class="card-body">
+        <form action="<%= data.id %>" method="POST">
+            <div class="form-group">
+                <input type="text" name="nombre" value="<%= data.nombre %>" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+                <input type="text" name="apellido" value="<%= data.apellido %>" placeholder="Apellido" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" name="telefono" value="<%= data.telefono %>" placeholder="Telefono" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                <input type="date" name="fecha_nacimiento" value="<%= data.fecha_nacimiento %>" placeholder="Fecha Nacimiento"
+                    class="form-control" id="fecha_nacimiento">
+            </div>
+            <div class="form-group">
+                <input type="email" name="correo" value="<%= data.correo %>" placeholder="Correo" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="contrasenia" value="<%= data.tipo %>" placeholder="Contraseña" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="seleccionTipo">Tipo de Usuario</label>
+                <select class="form-control" id="seleccionTipo" name="tipo" value="<%= data.contrasenia %>">
+                    <option>admin</option>
+                    <option>usuario</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary mt-2">
+                Guardar
+            </button>
+        </form>
+    </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>
+

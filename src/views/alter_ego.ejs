@@ -1,0 +1,56 @@
+<%- include('partials/_header'); -%>
+<h2>
+    Usuarios con alter ego
+</h2>
+<div class="col-md-12">
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <td>n°</td>
+                <td>Nombre</td>
+                <td>Apellido</td>
+                <td>Telefono</td>
+                <td>Edad</td>
+                <td>Fecha de Nacimiento</td>
+                <td>No de Reseñas</td>
+                <td>Correo</td>
+                <td>Tipo</td>
+                <td>contrasenia</td>
+                <td>alter_ego</td>
+                <td>Acciones</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (data) { %>
+            <% for (var i=0; i< data.length;i++){%>
+            <tr>
+                <td><%=(i+1)%></td>
+                <td><%= data[i].nombre %></td>
+                <td><%= data[i].apellido %></td>
+                <td><%= data[i].telefono %></td>
+                <td><%= data[i].edad %></td>
+                <td><%= data[i].fecha_nacimiento %></td>
+                <td><%= data[i].no_reseñas %></td>
+                <td><%= data[i].correo %></td>
+                <td><%= data[i].tipo %></td>
+                <td><%= data[i].contrasenia %></td>
+                <% if (data[i].alter_ego!= undefined) { %>
+                <td><%= data[i].alter_ego %></td>
+                <% } %>
+                <td>
+                    <form>
+                        <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                    </form>
+                    <form>
+                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                    </form>
+                </td>
+            </tr>
+            <% } %>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<div class="container-fluid">
+    <%- include('partials/_footer'); -%>
+</div>

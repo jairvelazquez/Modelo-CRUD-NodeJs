@@ -19,43 +19,76 @@
                             <td>No de Reseñas</td>
                             <td>Correo</td>
                             <td>Tipo</td>
-                            <td>Alter Ego</td>
+                            <td>contrasenia</td>
+                            <td>Acciones</td>
                         </tr>
                     </thead>
                     <tbody>
                         <% if (data) { %>
-                            <% for (var i=0; i< data.length;i++){%>
-                                <tr>
-                                <td><%=(i+1)%></td>
-                                <td><%= data[i].nombre %></td>
-                                <td><%= data[i].apellido %></td>
-                                <td><%= data[i].telefono %></td>
-                                <td><%= data[i].edad %></td>
-                                <td><%= data[i].fecha_nacimiento %></td>
-                                <td><%= data[i].no_reseñas %></td>
-                                <td><%= data[i].correo %></td>
-                                <td><%= data[i].tipo %></td>
-                                <td><%= data[i].contrasenia %></td>
-                                </tr>
-                            <% } %>
+                        <% for (var i=0; i< data.length;i++){%>
+                        <tr>
+                            <td><%=(i+1)%></td>
+                            <td><%= data[i].nombre %></td>
+                            <td><%= data[i].apellido %></td>
+                            <td><%= data[i].telefono %></td>
+                            <td><%= data[i].edad %></td>
+                            <td><%= data[i].fecha_nacimiento %></td>
+                            <td><%= data[i].no_reseñas %></td>
+                            <td><%= data[i].correo %></td>
+                            <td><%= data[i].tipo %></td>
+                            <td><%= data[i].contrasenia %></td>
+                            <td>
+                                <form>
+                                    <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                                </form>
+                                <form>
+                                    <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                                </form>
+                            </td>
+                        </tr>
+                        <% } %>
                         <% } %>
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-12">
+                <form>
+                    <a href="/alter_ego" class="btn btn-danger">Acceder a alter ego</a>
+                </form>
+            </div>
             <div class="col-md-5">
+                <h1>Agregar Nuevo usuario</h1>
                 <div class="card-body">
                     <form action="/add" method="POST">
                         <div class="form-group">
-                            <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
+                            <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus>
                         </div>
                         <div class="form-group">
-                            <input type="text" name="address" placeholder="Address" class="form-control">
+                            <input type="text" name="apellido" placeholder="Apellido" class="form-control">
                         </div>
                         <div class="form-group">
-                            <input type="text" name="phone" placeholder="Phone" class="form-control">
+                            <input type="text" name="telefono" placeholder="Telefono" class="form-control">
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            save customer
+                        <div class="form-group">
+                            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+                            <input type="date" name="fecha_nacimiento" placeholder="Fecha Nacimiento"
+                                class="form-control" id="fecha_nacimiento">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="correo" placeholder="Correo" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="contrasenia" placeholder="Contraseña" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="seleccionTipo">Tipo de Usuario</label>
+                            <select class="form-control" id="seleccionTipo" name="tipo">
+                                <option>admin</option>
+                                <option>usuario</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-2">
+                            Guardar
                         </button>
                     </form>
                 </div>
