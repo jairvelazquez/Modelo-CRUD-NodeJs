@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
-const personalidadController = require('../controllers/personalidadController');
+const peliculasController = require('../controllers/peliculaController');
 
-router.get('/personalidad',personalidadController.list);
+router.get('/',peliculasController.list);
+
+
 
 module.exports = router;

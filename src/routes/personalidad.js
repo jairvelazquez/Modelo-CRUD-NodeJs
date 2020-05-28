@@ -3,6 +3,7 @@ const router = express.Router();
 
 const personalidadController = require('../controllers/personalidadController');
 
-router.get('/personalidad',personalidadController.list);
+router.get('/', personalidadController.show);
+router.post('/delete',personalidadController.delete);
 
 module.exports = router;

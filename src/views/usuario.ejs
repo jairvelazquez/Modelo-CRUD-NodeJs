@@ -2,39 +2,66 @@
 
 <div class="container-fluid mt-4">
     <h2>
-        Identificarse
+        Usuarios
     </h2>
-    <form action="/buscar">
+    <div class="container mt-5">
         <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Nombre">Nombre de usuario</label>
-                    <input type="email" class="form-control" id="Nombre" placeholder="Ingresa tu usuario">
+            <div class="col-md-12">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>n°</td>
+                            <td>Nombre</td>
+                            <td>Apellido</td>
+                            <td>Telefono</td>
+                            <td>Edad</td>
+                            <td>Fecha de Nacimiento</td>
+                            <td>No de Reseñas</td>
+                            <td>Correo</td>
+                            <td>Tipo</td>
+                            <td>Alter Ego</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (data) { %>
+                            <% for (var i=0; i< data.length;i++){%>
+                                <tr>
+                                <td><%=(i+1)%></td>
+                                <td><%= data[i].nombre %></td>
+                                <td><%= data[i].apellido %></td>
+                                <td><%= data[i].telefono %></td>
+                                <td><%= data[i].edad %></td>
+                                <td><%= data[i].fecha_nacimiento %></td>
+                                <td><%= data[i].no_reseñas %></td>
+                                <td><%= data[i].correo %></td>
+                                <td><%= data[i].tipo %></td>
+                                <td><%= data[i].contrasenia %></td>
+                                </tr>
+                            <% } %>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-5">
+                <div class="card-body">
+                    <form action="/add" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Name" class="form-control" autofocus>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="address" placeholder="Address" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="phone" placeholder="Phone" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                            save customer
+                        </button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Acceder</button>
-    </form>
-</div>
-<div class="container-fluid mt-4">
-    <h2>
-        Edicion
-    </h2>
-    <form action="editar">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="Nombre">Nombre de usuario</label>
-                    <input type="email" class="form-control" id="Nombre" placeholder="Ingresa tu usuario">
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputPassword1">Contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                </div>
-                <button type="submit" class="btn btn-primary">Acceder</button>
-    </form>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container-fluid">
     <%- include('partials/_footer'); -%>
