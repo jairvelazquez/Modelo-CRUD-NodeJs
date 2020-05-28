@@ -26,8 +26,12 @@
                 <td><%= data[i].edad %></td>
                 <td><%= data[i].fecha_nacimiento %></td>
                 <td>
-                  <a href="/update/<%= data[i].id %>" class="btn btn-info">Edit</a>
-                  <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Delete</a>
+                  <form>
+                  <a href="personalidad/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                </form>
+                  <form>
+                  <a href="personalidad/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                  </form>
                 </td>
               </tr>
             <% } %>
@@ -38,7 +42,7 @@
     <div class="col-md-5">
       <div class="card-body">
 
-        <form action="/add" method="POST">
+        <form action="personalidad/add" method="POST">
           <div class="form-group">
             <input type="text" name="nombre" placeholder="Nombre" class="form-control" autofocus>
           </div>
