@@ -1,0 +1,86 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>ID.</td>
+            <td>Fecha estreno</td>
+            <td>Nombre</td>
+            <td>ranking estable</td>
+            <td>sinopsis</td>
+            <td>ranking caliente</td>
+            <td>casa productora</td>
+            <td>sub genero</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nombre %></td>
+                <td><%= data[i].fecha_estreno %></td>             
+                <td><%= data[i].ranking_estable %></td>
+                <td><%= data[i].sinopsis %></td>
+                <td><%= data[i].ranking_caliente %></td>
+                <td><%= data[i].casa_productora %></td>
+                <td><%= data[i].sub_genero %></td>
+                <td>
+                  <form>
+                  <a href="peliculas/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                  </form>
+                  <form>
+                  <a href="peliculas/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div> 
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+        <div class="card-body">
+          <form action="peliculas/add" method="POST">
+            <legend>Agregar pelicula</legend>
+            <div class="form-group">
+              <input type="date" name="fecha_estreno" placeholder="Fecha de estreno" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="nombre" placeholder="Nombre" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" name="ranking_estable" placeholder="ranking estable" min="1" max="10" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="sinopsis" placeholder="Sinopsis" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" name="ranking_caliente" placeholder="Ranking caliente" min="1" max="5" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="text" name="casa_productora" placeholder="Casa productora" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="number" name="id_genero" placeholder="id genero" min="1" max="15" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Guardar
+            </button>
+          </form>
+          <div class="col-mt-12">
+            <form>
+                <a href="peliculas/addPart/" class="btn btn-info">Agregar participación</a>
+            </form>
+          </div>
+        </div>
+      </div>
+  </div> 
+</div>
+
+<%- include('partials/_footer'); -%>
