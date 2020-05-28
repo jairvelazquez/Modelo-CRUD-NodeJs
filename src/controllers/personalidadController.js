@@ -6,7 +6,7 @@ controller.list = (req, res) => {
      if (err) {
       res.json(err);
      }
-     res.render('customers', {
+     res.render('personalidades', {
         data: customers
      });
     });
@@ -28,7 +28,7 @@ controller.edit = (req, res) => {
   const { id } = req.params;
   req.getConnection((err, conn) => {
     conn.query("SELECT * FROM personalidad WHERE id = ?", [id], (err, rows) => {
-      res.render('customers_edit', {
+      res.render('personalidades_upd', {
         data: rows[0]
       })
     });
