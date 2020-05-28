@@ -2,12 +2,12 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    conn.query('SELECT * FROM personalidad', (err, customers) => {
+    conn.query('SELECT * FROM personalidad', (err, personalidad) => {
      if (err) {
       res.json(err);
      }
      res.render('personalidades', {
-        data: customers
+        data: personalidad
      });
     });
   });
@@ -17,8 +17,8 @@ controller.save = (req, res) => {
   const data = req.body;
   console.log(req.body)
   req.getConnection((err, connection) => {
-    const query = connection.query('INSERT INTO personalidad set ?', data, (err, customer) => {
-      console.log(customer)
+    const query = connection.query('INSERT INTO personalidad set ?', data, (err, personalidad) => {
+      console.log(personalidad)
       res.redirect('/personalidad');
     })
   })
@@ -54,5 +54,16 @@ controller.delete = (req, res) => {
     });
   });
 }
+
+controller.proc1 = (req, res) => {
+  const data1 = req.body;
+  console.log(req.body)
+  req.getConnection((err, connection) => {
+    const query = connection.query('call agregar_personalidad_guionista(?,?,?,?,?,?)', [data1.nom,data1.ap,data1.sexo,data1.nacim,data1.gui,data1.gen], (err, personalidad) => {
+      console.log(personalidad)
+      res.redirect('/personalidad');
+    })
+  })
+};
 
 module.exports = controller;

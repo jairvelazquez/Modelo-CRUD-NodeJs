@@ -8,6 +8,7 @@ router.post('/add', personalidadController.save);
 router.get('/update/:id', personalidadController.edit);
 router.post('/update/:id', personalidadController.update);
 router.get('/delete/:id', personalidadController.delete);
+router.post('/addgui', personalidadController.proc1);
 
 module.exports = router;
 
