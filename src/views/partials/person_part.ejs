@@ -1,0 +1,36 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>No.</td>
+            <td>Nombre</td>
+            <td>Apellidos</td>
+            <td>Rol</td>
+            <td>ID Película</td>
+            <td>Nombre Película</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nombre %></td>
+                <td><%= data[i].apellidos %></td>
+                <td><%= data[i].rol %></td>
+                <td><%= data[i].id_pelicula %></td>
+                <td><%= data[i].nombre_p %></td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    </div>
+
+    <%- include('partials/_footer'); -%>
