@@ -64,13 +64,20 @@ controller.delete = (req, res) => {
 
 controller.parti = (req, res) => {
   const data = req.body;
-  console.log(req.body)
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO participa set ?', data, (err, pelicula) => {
       console.log(pelicula)
-      res.redirect('/participa_add');
+      res.redirect('/personalidad/participaciones');
     });
   });
 }
+
+controller.muestra = (req, res) => {
+  console.log(req.body);
+  req.getConnection((err, connection) => {
+    res.render('participa_add');
+  });
+}
+
 
 module.exports = controller;
