@@ -1,0 +1,141 @@
+<%- include('partials/_header'); -%>
+
+<h1>Peliculas</h1>
+<form action="buscar/buscaPeliculas" method="POST">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="exampleFormControlSelect1">Metodo de busqueda</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="metodo">
+                    <option>Identificador</option>
+                    <option>Nombre</option>
+                    <option>Fecha_Estreno</option>
+                    <option>CasaProductora</option>
+                </select>
+            </div>
+            <div class="col-md-7">
+                <label for="busqueda">Valor de la busqueda</label>
+                <div class="form-group">
+                    <input type="text" name="busqueda" placeholder="Buscar" class="form-control" id="busqueda">
+                </div>
+            </div>
+            <div class="col-md-7">
+            <button type="submit" class="btn btn-primary mt-2">
+                Buscar
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
+<h1>Personalidad</h1>
+<form action="buscar/buscaPersonalidad" method="POST">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="exampleFormControlSelect1">Metodo de busqueda</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="metodo">
+                    <option>Identificador</option>
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>FechaNacimiento</option>
+                    <option>Edad</option>
+                </select>
+            </div>
+            <div class="col-md-7">
+                <label for="busqueda">Valor de la busqueda</label>
+                <div class="form-group">
+                    <input type="text" name="busqueda" placeholder="Buscar" class="form-control" id="busqueda">
+                </div>
+            </div>
+            <div class="col-md-7">
+            <button type="submit" class="btn btn-primary mt-2">
+                Buscar
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
+<h1>Usuario</h1>
+<form action="buscar/buscaUsuario" method="POST">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="exampleFormControlSelect1">Metodo de busqueda</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="metodo">
+                    <option>Identificador</option>
+                    <option>Nombre</option>
+                    <option>Apellido</option>
+                    <option>FechaNacimiento</option>
+                    <option>Correo</option>
+                    <option>Tipo</option>
+                </select>
+            </div>
+            <div class="col-md-7">
+                <label for="busqueda">Valor de la busqueda</label>
+                <div class="form-group">
+                    <input type="text" name="busqueda" placeholder="Buscar" class="form-control" id="busqueda">
+                </div>
+            </div>
+            <div class="col-md-7">
+            <button type="submit" class="btn btn-primary mt-2">
+                Buscar
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
+<h1>Puntua Caliente</h1>
+<form action="buscar/buscarPuntuaCaliente" method="POST">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="exampleFormControlSelect1">Metodo de busqueda</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="metodo">
+                    <option>Identificador</option>
+                    <option>Alter Ego</option>
+                    <option>Calificacion</option>
+                </select>
+            </div>
+            <div class="col-md-7">
+                <label for="busqueda">Valor de la busqueda</label>
+                <div class="form-group">
+                    <input type="text" name="busqueda" placeholder="Buscar" class="form-control" id="busqueda">
+                </div>
+            </div>
+            <div class="col-md-7">
+            <button type="submit" class="btn btn-primary mt-2">
+                Buscar
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
+<h1>Puntua Estable</h1>
+<form action="buscar/buscarPuntuaEstable" method="POST">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <label for="exampleFormControlSelect1">Metodo de busqueda</label>
+                <select class="form-control" id="exampleFormControlSelect1" name="metodo">
+                    <option>Identificador Pelicula</option>
+                    <option>Identificador Usuario</option>
+                </select>
+            </div>
+            <div class="col-md-7">
+                <label for="busqueda">Valor de la busqueda</label>
+                <div class="form-group">
+                    <input type="text" name="busqueda" placeholder="Buscar" class="form-control" id="busqueda">
+                </div>
+            </div>
+            <div class="col-md-7">
+            <button type="submit" class="btn btn-primary mt-2">
+                Buscar
+            </button>
+        </div>
+        </div>
+    </div>
+</form>
+
+<div class="container-fluid">
+    <%- include('partials/_footer'); -%>
+</div>

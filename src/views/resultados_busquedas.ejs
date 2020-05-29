@@ -1,0 +1,114 @@
+<%- include('partials/_header'); -%>
+
+<h1>
+    Resultados Busqueda
+</h1>
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <% if (data[0].nombre_p !=undefined) { %>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Fecha Estreno</td>
+                    <td>Casa Productora</td>
+                    <td>Sinopsis</td>
+                    <% } %>
+                    <%  if (data[0].sexo !=undefined) { %>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Fecha Nacimiento</td>
+                    <td>Edad</td>
+                    <% } %>
+                    <%  if (data[0].correo !=undefined) { %>
+                    <td>ID</td>
+                    <td>Nombre</td>
+                    <td>Apellido</td>
+                    <td>Fecha Nacimiento</td>
+                    <td>Edad</td>
+                    <td>Reseñas</td>
+                    <td>Correo</td>
+                    <td>Tipo</td>
+                    <% } %>
+                    <%  if (data[0].alter_ego !=undefined) { %>
+                    <td>ID</td>
+                    <td>Nombre Pelicula</td>
+                    <td>Alter Ego</td>
+                    <td>Comentarios</td>
+                    <td>Calificacion</td>
+                    <% } %>
+                    <%  if (data[0].nombre_usuario!=undefined) { %>
+                    <td>ID Pelicula</td>
+                    <td>Nombre Pelicula</td>
+                    <td>Nombre Usuario</td>
+                    <td>Calificacion</td>
+                    <% } %>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (data[0].nombre_p !=undefined) { %>
+                <% for (var i=0; i< data.length;i++){%>
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].nombre_p %></td>
+                    <td><%= data[i].fecha_estreno %></td>
+                    <td><%= data[i].casa_productora %></td>
+                    <td><%= data[i].sinopsis %></td>
+                </tr>
+                <% } %>
+                <% } %>
+                <%  if (data[0].sexo !=undefined) { %>
+                <% for (var i=0; i< data.length;i++){%>
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].nombre %></td>
+                    <td><%= data[i].apellidos %></td>
+                    <td><%= data[i].fecha_nacimiento %></td>
+                    <td><%= data[i].edad %></td>
+                </tr>
+                <% } %>
+                <% } %>
+                <%  if (data[0].correo !=undefined) { %>
+                <% for (var i=0; i< data.length;i++){%>
+                <tr>
+                    <td><%= data[i].id %></td>
+                    <td><%= data[i].nombre %></td>
+                    <td><%= data[i].apellido %></td>
+                    <td><%= data[i].fecha_nacimiento %></td>
+                    <td><%= data[i].edad %></td>
+                    <td><%= data[i].no_reseñas %></td>
+                    <td><%= data[i].correo %></td>
+                    <td><%= data[i].tipo %></td>
+                </tr>
+                <% } %>
+                <% } %>
+                <%  if (data[0].alter_ego !=undefined) { %>
+                <% for (var i=0; i< data.length;i++){%>
+                <tr>
+                    <td><%= data[i].id_pelicula %></td>
+                    <td><%= data[i].nombre_pelicula %></td>
+                    <td><%= data[i].alter_ego %></td>
+                    <td><%= data[i].comentarios %></td>
+                    <td><%= data[i].calificacion %></td>
+                </tr>
+                <% } %>
+                <% } %>
+                <%  if (data[0].nombre_usuario !=undefined) { %>
+                <% for (var i=0; i< data.length;i++){%>
+                <tr>
+                    <td><%= data[i].id_pelicula %></td>
+                    <td><%= data[i].nombre_pelicula %></td>
+                    <td><%= data[i].nombre_usuario %></td>
+                    <td><%= data[i].calificacion_estable %></td>
+                </tr>
+                <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container-fluid">
+    <%- include('partials/_footer'); -%>
+</div>
