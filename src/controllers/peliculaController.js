@@ -22,10 +22,9 @@ controller.list = (req, res) => {
 
 controller.save = (req, res) => {
   const data = req.body;
-  console.log(req.body)
   req.getConnection((err, connection) => {
-    const query = connection.query('INSERT INTO pelicula set ?', data, (err, pelicula) => {
-      console.log(pelicula)
+    const query = connection.query('INSERT INTO pelicula(nombre_p,fecha_estreno,ranking_estable,sinopsis,ranking_caliente,casa_productora,id_genero) values(?,?,?,?,?,?,?);',
+      [data.nombre,data.fecha_estreno,data.ranking_estable,data.sinopsis,data.ranking_caliente,data.casa_productora,data.id_genero], (err, pelicula) => {
       res.redirect('/peliculas');
     })
   })
@@ -43,11 +42,13 @@ controller.edit = (req, res) => {
 };
 
 controller.update = (req, res) => {
+  console.log("Llega");
   const { id } = req.params;
-  const newCustomer = req.body;
+  const data = req.body;
   req.getConnection((err, conn) => {
 
-  conn.query('UPDATE pelicula set ? where id = ?', [newCustomer, id], (err, rows) => {
+  conn.query('UPDATE pelicula set nombre_p = ?,fecha_estreno = ?, ranking_estable = ?, sinopsis =?, ranking_caliente = ?, casa_productora = ?, id_genero = ? where id = ?',
+   [data.nombre,data.fecha_estreno,data.ranking_estable,data.sinopsis,data.ranking_caliente,data.casa_productora,data.id_genero, id], (err, rows) => {
     res.redirect('/peliculas');
   });
   });
