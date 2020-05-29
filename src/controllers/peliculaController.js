@@ -1,10 +1,10 @@
 const controller = {};
 
 controller.list = (req, res) => {
-  let ca1 = " select pelicula.nombre, pelicula.fecha_estreno, pelicula.ranking_estable, pelicula.sinopsis, pelicula.ranking_caliente, pelicula.casa_productora, genero.id, terror.sub_genero ";
-  let ca2 = " from genero inner join pelicula on pelicula.id=genero.id inner join terror on terror.id_genero=genero.id union select pelicula.nombre, pelicula.fecha_estreno, pelicula.ranking_estable,";
+  let ca1 = " select pelicula.nombre_p, pelicula.fecha_estreno, pelicula.ranking_estable, pelicula.sinopsis, pelicula.ranking_caliente, pelicula.casa_productora, genero.id, terror.sub_genero ";
+  let ca2 = " from genero inner join pelicula on pelicula.id=genero.id inner join terror on terror.id_genero=genero.id union select pelicula.nombre_p, pelicula.fecha_estreno, pelicula.ranking_estable,";
   let ca3 = " pelicula.sinopsis, pelicula.ranking_caliente, pelicula.casa_productora, genero.id, accion.sub_genero ";
-  let ca4 = " from genero inner join pelicula on pelicula.id=genero.id inner join accion on accion.id_genero=genero.id union select pelicula.nombre, pelicula.fecha_estreno, pelicula.ranking_estable, pelicula.sinopsis,";
+  let ca4 = " from genero inner join pelicula on pelicula.id=genero.id inner join accion on accion.id_genero=genero.id union select pelicula.nombre_p, pelicula.fecha_estreno, pelicula.ranking_estable, pelicula.sinopsis,";
   let ca5 = " pelicula.ranking_caliente, pelicula.casa_productora, genero.id, drama.sub_genero";
   let ca6 = " from genero inner join pelicula on pelicula.id=genero.id inner join drama on drama.id_genero=genero.id";
   const query = ca1.concat(ca2, ca3, ca4, ca5, ca6);
@@ -61,16 +61,20 @@ controller.delete = (req, res) => {
     });
   });
 }
-
 controller.parti = (req, res) => {
   const data = req.body;
-  console.log(req.body)
   req.getConnection((err, connection) => {
     const query = connection.query('INSERT INTO participa set ?', data, (err, pelicula) => {
       console.log(pelicula)
-      res.redirect('/participa_add');
+      res.redirect('/personalidad/participaciones');
     });
   });
 }
 
+controller.muestra = (req, res) => {
+  console.log(req.body);
+  req.getConnection((err, connection) => {
+    res.render('participa_add');
+  });
+}
 module.exports = controller;

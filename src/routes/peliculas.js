@@ -9,5 +9,5 @@ router.get('/update/:id', peliculaController.edit);
 router.post('/update/:id', peliculaController.update);
 router.get('/delete/:id', peliculaController.delete);
 router.post('/addPart', peliculaController.parti);
-
+router.get('/mostrar',peliculaController.muestra);
 module.exports = router;
