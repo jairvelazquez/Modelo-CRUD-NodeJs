@@ -29,7 +29,7 @@ CREATE TABLE `accion` (
   `sub_genero` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_accion`),
   KEY `id_genero` (`id_genero`),
-  CONSTRAINT `accion_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `accion_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -55,7 +55,7 @@ CREATE TABLE `actor` (
   `origen` varchar(50) NOT NULL,
   `arquetipo` varchar(50) NOT NULL,
   KEY `id_personalidad` (`id_personalidad`),
-  CONSTRAINT `actor_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `actor_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -81,7 +81,7 @@ CREATE TABLE `critico` (
   `alter_ego` varchar(50) NOT NULL,
   PRIMARY KEY (`alter_ego`),
   KEY `id_usuario` (`id_usuario`),
-  CONSTRAINT `critico_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `critico_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -108,7 +108,7 @@ CREATE TABLE `director` (
   `estilo` varchar(50) NOT NULL,
   `pelicula_reconocida` varchar(50) NOT NULL,
   KEY `id_personalidad` (`id_personalidad`),
-  CONSTRAINT `director_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `director_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -136,7 +136,7 @@ CREATE TABLE `drama` (
   `sub_genero` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id_drama`),
   KEY `id_genero` (`id_genero`),
-  CONSTRAINT `drama_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `drama_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -186,7 +186,7 @@ CREATE TABLE `guionista` (
   `guion_reconocido` varchar(50) NOT NULL,
   `genero` varchar(30) NOT NULL,
   PRIMARY KEY (`id_personalidad`),
-  CONSTRAINT `guionista_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE RESTRICT ON UPDATE CASCADE
+  CONSTRAINT `guionista_ibfk_1` FOREIGN KEY (`id_personalidad`) REFERENCES `personalidad` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -238,7 +238,7 @@ DROP TABLE IF EXISTS `pelicula`;
 CREATE TABLE `pelicula` (
   `id` int NOT NULL AUTO_INCREMENT,
   `fecha_estreno` date NOT NULL,
-  `nombre` varchar(50) NOT NULL,
+  `nombre_p` varchar(50) NOT NULL,
   `ranking_estable` tinyint DEFAULT NULL,
   `sinopsis` varchar(1000) NOT NULL,
   `ranking_caliente` tinyint DEFAULT NULL,
@@ -246,7 +246,7 @@ CREATE TABLE `pelicula` (
   `id_genero` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_genero` (`id_genero`),
-  CONSTRAINT `pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON UPDATE CASCADE
+  CONSTRAINT `pelicula_ibfk_1` FOREIGN KEY (`id_genero`) REFERENCES `genero` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -256,7 +256,7 @@ CREATE TABLE `pelicula` (
 
 LOCK TABLES `pelicula` WRITE;
 /*!40000 ALTER TABLE `pelicula` DISABLE KEYS */;
-INSERT INTO `pelicula` (`id`, `fecha_estreno`, `nombre`, `ranking_estable`, `sinopsis`, `ranking_caliente`, `casa_productora`, `id_genero`) VALUES (1,'1982-11-11','Blade Runner',8,'En un futuro sombrío y lluvioso, un expolicía vuelve al servicio para buscar y destruir a un grupo de androides que fingen ser humanos para, integrados en la sociedad, encontrar a su creador y matarlo',3,'The Ladd Company',1),(2,'1977-12-23','Star Wars IV',7,'La nave en la que viaja la princesa Leia es capturada por las tropas imperiales al mando del temible Darth Vader. Antes de ser atrapada, Leia consigue introducir un mensaje en su robot R2-D2, quien acompañado de su inseparable C-3PO logra escapar.',4,'LucasFilm',2),(3,'1999-09-08','American Beauty',6,'La visión de un joven núbil inspira a un esposo a aprovechar su última oportunidad para lograr la verdadera felicidad.',5,'DreamWorks',3),(4,'2003-10-03','Lost in Translation',5,'Un actor de mediana edad que está en Tokio para grabar un comercial conoce a la joven esposa de un fotógrafo de famosos.',3,'American Zoetrope',4),(5,'1998-03-06','The big Lebowski',9,'Un desempleado es confundido por unos matones con el millonario Jeff Lebowski, quien se llama igual que él y a cuya esposa han secuestrado. Cuando acude a casa del millonario para quejarse, éste decide contratarlo para rescatar a su esposa a cambio de una recompensa.',4,'Polygram Filmed Entertainment',5),(6,'2003-12-24','Irreversible',10,'El amante de una mujer y su ex novio toman la justicia en sus manos después de que ella se convierte en la víctima de un violador.',5,'Les Cinémas de la Zone',6),(7,'2015-03-24','It follows',10,'Jay, una joven de 18 años, tiene una experiencia sexual con su novio en la parte trasera del auto, tras la cual su novio la ata a una silla y le explica que le ha transmitido una maldición que se propaga mediante el sexo.',1,'Animal Kingdom',7),(8,'2017-11-09','Newness',6,'En Los Ángeles, dos millennials que navegan en una cultura impulsada por los medios sociales comienzan una relación que empuja los límites emocionales y físicos.',2,'fsdf',8),(9,'2000-09-08','Dancing in the dark',7,'Una trabajadora inmigrante empieza a vivir en un mundo de fantasía musical cuando un desorden genético afecta su visión.',3,'Canal',9),(10,'2009-04-04','Mary and Max',8,'Una solitaria chica (Toni Collette) australiana y un anciano (Philip Seymour Hoffman) judío desarrollan en Nueva York una singular amistad a través de cartas.',4,'Melodrama',10),(11,'2001-06-20','Ghost World',9,'Enid y Rebecca han terminado la escuela secundaria y no saben cómo pasar el tiempo. Atraídas por los personajes extravagantes, Enid concierta una cieta a ciegas con el autor del anuncio más lamentable de los que encuentran en el periódico local.',4,' ‎United Artists',11),(12,'2010-11-10','Chico y rita',9,'Un pianista cubano es herido por una cantante apasionada, provocando un romance apasionado a lo largo de seis décadas.',4,' ‎Magic Light Pictures',12),(13,'2014-01-31','Her',10,'En Los Ángeles, un escritor desanimado desarrolla una especial relación amorosa con el sistema operativo de su computadora, una intuitiva y sensible entidad llamada Samantha.',5,' Annapurna Pictures',13),(14,'2018-02-15','Lady Bird',7,'Marion McPherson, una enfermera de California, trabaja incansablemente para sustentar a su familia desde que su esposo quedó desempleado. Marion tiene problemas con su hija adolescente, de inclinaciones artísticas y temperamento fuerte.',6,'‎Scott Rudin Productions',14),(15,'2018-10-04','La casa de jack',5,'Un seguimiento durante doce años a Jack, un asesino en serie que mata mujeres y está obsesionado con la perfección. Su historia transcurre en paralelo a la de Estados Unidos durante las décadas de 1970 y 1980.',7,'Zentropa',15);
+INSERT INTO `pelicula` (`id`, `fecha_estreno`, `nombre_p`, `ranking_estable`, `sinopsis`, `ranking_caliente`, `casa_productora`, `id_genero`) VALUES (1,'1982-11-11','Blade Runner',8,'En un futuro sombrío y lluvioso, un expolicía vuelve al servicio para buscar y destruir a un grupo de androides que fingen ser humanos para, integrados en la sociedad, encontrar a su creador y matarlo',3,'The Ladd Company',1),(2,'1977-12-23','Star Wars IV',7,'La nave en la que viaja la princesa Leia es capturada por las tropas imperiales al mando del temible Darth Vader. Antes de ser atrapada, Leia consigue introducir un mensaje en su robot R2-D2, quien acompañado de su inseparable C-3PO logra escapar.',4,'LucasFilm',2),(3,'1999-09-08','American Beauty',6,'La visión de un joven núbil inspira a un esposo a aprovechar su última oportunidad para lograr la verdadera felicidad.',5,'DreamWorks',3),(4,'2003-10-03','Lost in Translation',5,'Un actor de mediana edad que está en Tokio para grabar un comercial conoce a la joven esposa de un fotógrafo de famosos.',3,'American Zoetrope',4),(5,'1998-03-06','The big Lebowski',9,'Un desempleado es confundido por unos matones con el millonario Jeff Lebowski, quien se llama igual que él y a cuya esposa han secuestrado. Cuando acude a casa del millonario para quejarse, éste decide contratarlo para rescatar a su esposa a cambio de una recompensa.',4,'Polygram Filmed Entertainment',5),(6,'2003-12-24','Irreversible',10,'El amante de una mujer y su ex novio toman la justicia en sus manos después de que ella se convierte en la víctima de un violador.',5,'Les Cinémas de la Zone',6),(7,'2015-03-24','It follows',10,'Jay, una joven de 18 años, tiene una experiencia sexual con su novio en la parte trasera del auto, tras la cual su novio la ata a una silla y le explica que le ha transmitido una maldición que se propaga mediante el sexo.',1,'Animal Kingdom',7),(8,'2017-11-09','Newness',6,'En Los Ángeles, dos millennials que navegan en una cultura impulsada por los medios sociales comienzan una relación que empuja los límites emocionales y físicos.',2,'fsdf',8),(9,'2000-09-08','Dancing in the dark',7,'Una trabajadora inmigrante empieza a vivir en un mundo de fantasía musical cuando un desorden genético afecta su visión.',3,'Canal',9),(10,'2009-04-04','Mary and Max',8,'Una solitaria chica (Toni Collette) australiana y un anciano (Philip Seymour Hoffman) judío desarrollan en Nueva York una singular amistad a través de cartas.',4,'Melodrama',10),(11,'2001-06-20','Ghost World',9,'Enid y Rebecca han terminado la escuela secundaria y no saben cómo pasar el tiempo. Atraídas por los personajes extravagantes, Enid concierta una cieta a ciegas con el autor del anuncio más lamentable de los que encuentran en el periódico local.',4,' ‎United Artists',11),(12,'2010-11-10','Chico y rita',9,'Un pianista cubano es herido por una cantante apasionada, provocando un romance apasionado a lo largo de seis décadas.',4,' ‎Magic Light Pictures',12),(13,'2014-01-31','Her',10,'En Los Ángeles, un escritor desanimado desarrolla una especial relación amorosa con el sistema operativo de su computadora, una intuitiva y sensible entidad llamada Samantha.',5,' Annapurna Pictures',13),(14,'2018-02-15','Lady Bird',7,'Marion McPherson, una enfermera de California, trabaja incansablemente para sustentar a su familia desde que su esposo quedó desempleado. Marion tiene problemas con su hija adolescente, de inclinaciones artísticas y temperamento fuerte.',6,'‎Scott Rudin Productions',14),(15,'2018-10-04','La casa de jack',5,'Un seguimiento durante doce años a Jack, un asesino en serie que mata mujeres y está obsesionado con la perfección. Su historia transcurre en paralelo a la de Estados Unidos durante las décadas de 1970 y 1980.',7,'Zentropa',15);
 /*!40000 ALTER TABLE `pelicula` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -302,8 +302,8 @@ CREATE TABLE `puntua_caliente` (
   `calificacion` tinyint NOT NULL,
   KEY `alter_ego` (`alter_ego`),
   KEY `id_pelicula` (`id_pelicula`),
-  CONSTRAINT `puntua_caliente_ibfk_1` FOREIGN KEY (`alter_ego`) REFERENCES `critico` (`alter_ego`),
-  CONSTRAINT `puntua_caliente_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`)
+  CONSTRAINT `puntua_caliente_ibfk_1` FOREIGN KEY (`alter_ego`) REFERENCES `critico` (`alter_ego`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `puntua_caliente_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -313,7 +313,7 @@ CREATE TABLE `puntua_caliente` (
 
 LOCK TABLES `puntua_caliente` WRITE;
 /*!40000 ALTER TABLE `puntua_caliente` DISABLE KEYS */;
-INSERT INTO `puntua_caliente` (`id_pelicula`, `alter_ego`, `comentarios`, `calificacion`) VALUES (1,'Peter','Excelente pelicula, gran historia y desarrollo',5),(2,'Peter','Podria ser mejor',2),(3,'Peter','Horrible',5),(4,'Peter','Podria ser mejor',2),(5,'Peter','gran historia y desarrollo',4),(6,'Peter','Excelente pelicula, gran historia y desarrollo',5),(7,'Peter','Esta pasable',3),(8,'Peter','Horrible',1),(9,'Peter','Podria ser mejor',2),(10,'Peter','gran historia y desarrollo',4),(11,'Peter','Excelente pelicula, gran historia y desarrollo',5),(12,'Peter','Esta pasable',3),(13,'Peter','Horrible',1),(2,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(4,'Sandy','Podria ser mejor',2),(6,'Sandy','Horrible',5),(8,'Sandy','Podria ser mejor',2),(10,'Sandy','gran historia y desarrollo',4),(12,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(1,'Sandy','Esta pasable',3),(3,'Sandy','Horrible',1),(5,'Sandy','Podria ser mejor',2),(7,'Sandy','gran historia y desarrollo',4),(9,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(11,'Sandy','Esta pasable',3),(13,'Sandy','Horrible',1),(3,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(1,'Roxx','Podria ser mejor',2),(5,'Roxx','Horrible',5),(7,'Roxx','Podria ser mejor',2),(13,'Roxx','gran historia y desarrollo',4),(12,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(11,'Roxx','Esta pasable',3),(8,'Roxx','Horrible',1),(9,'Roxx','Podria ser mejor',2),(10,'Roxx','gran historia y desarrollo',4),(2,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(4,'Roxx','Esta pasable',3),(6,'Roxx','Horrible',1),(13,'Luca','Excelente pelicula, gran historia y desarrollo',5),(12,'Luca','Podria ser mejor',2),(11,'Luca','Horrible',5),(10,'Luca','Podria ser mejor',2),(9,'Luca','gran historia y desarrollo',4),(8,'Luca','Excelente pelicula, gran historia y desarrollo',5),(7,'Luca','Esta pasable',3),(6,'Luca','Horrible',1),(5,'Luca','Podria ser mejor',2),(4,'Luca','gran historia y desarrollo',4),(3,'Luca','Excelente pelicula, gran historia y desarrollo',5),(2,'Luca','Esta pasable',3),(1,'Luca','Horrible',1),(11,'Steve','Excelente pelicula, gran historia y desarrollo',5),(5,'Steve','Podria ser mejor',2),(1,'Steve','Horrible',5),(10,'Steve','Podria ser mejor',2),(4,'Steve','gran historia y desarrollo',4),(9,'Steve','Excelente pelicula, gran historia y desarrollo',5),(2,'Steve','Esta pasable',3),(3,'Steve','Horrible',1),(7,'Steve','Podria ser mejor',2),(6,'Steve','gran historia y desarrollo',4),(8,'Steve','Excelente pelicula, gran historia y desarrollo',5),(13,'Steve','Esta pasable',3),(12,'Steve','Horrible',1),(12,'Steve','Horrible',1),(12,'Steve','',1);
+INSERT INTO `puntua_caliente` (`id_pelicula`, `alter_ego`, `comentarios`, `calificacion`) VALUES (1,'Peter','Excelente pelicula, gran historia y desarrollo',5),(2,'Peter','Podria ser mejor',2),(3,'Peter','Horrible',5),(4,'Peter','Podria ser mejor',2),(5,'Peter','gran historia y desarrollo',4),(6,'Peter','Excelente pelicula, gran historia y desarrollo',5),(7,'Peter','Esta pasable',3),(8,'Peter','Horrible',1),(9,'Peter','Podria ser mejor',2),(10,'Peter','gran historia y desarrollo',4),(11,'Peter','Excelente pelicula, gran historia y desarrollo',5),(12,'Peter','Esta pasable',3),(13,'Peter','Horrible',1),(2,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(4,'Sandy','Podria ser mejor',2),(6,'Sandy','Horrible',5),(8,'Sandy','Podria ser mejor',2),(10,'Sandy','gran historia y desarrollo',4),(12,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(1,'Sandy','Esta pasable',3),(3,'Sandy','Horrible',1),(5,'Sandy','Podria ser mejor',2),(7,'Sandy','gran historia y desarrollo',4),(9,'Sandy','Excelente pelicula, gran historia y desarrollo',5),(11,'Sandy','Esta pasable',3),(13,'Sandy','Horrible',1),(3,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(1,'Roxx','Podria ser mejor',2),(5,'Roxx','Horrible',5),(7,'Roxx','Podria ser mejor',2),(13,'Roxx','gran historia y desarrollo',4),(12,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(11,'Roxx','Esta pasable',3),(8,'Roxx','Horrible',1),(9,'Roxx','Podria ser mejor',2),(10,'Roxx','gran historia y desarrollo',4),(2,'Roxx','Excelente pelicula, gran historia y desarrollo',5),(4,'Roxx','Esta pasable',3),(6,'Roxx','Horrible',1),(13,'Luca','Excelente pelicula, gran historia y desarrollo',5),(12,'Luca','Podria ser mejor',2),(11,'Luca','Horrible',5),(10,'Luca','Podria ser mejor',2),(9,'Luca','gran historia y desarrollo',4),(8,'Luca','Excelente pelicula, gran historia y desarrollo',5),(7,'Luca','Esta pasable',3),(6,'Luca','Horrible',1),(5,'Luca','Podria ser mejor',2),(4,'Luca','gran historia y desarrollo',4),(3,'Luca','Excelente pelicula, gran historia y desarrollo',5),(2,'Luca','Esta pasable',3),(1,'Luca','Horrible',1),(11,'Steve','Excelente pelicula, gran historia y desarrollo',5),(5,'Steve','Podria ser mejor',2),(1,'Steve','Horrible',5),(10,'Steve','Podria ser mejor',2),(4,'Steve','gran historia y desarrollo',4),(9,'Steve','Excelente pelicula, gran historia y desarrollo',5),(2,'Steve','Esta pasable',3),(3,'Steve','Horrible',1),(7,'Steve','Podria ser mejor',2),(6,'Steve','gran historia y desarrollo',4),(8,'Steve','Excelente pelicula, gran historia y desarrollo',5),(13,'Steve','Esta pasable',3),(12,'Steve','Horrible',1),(12,'Steve','Horrible',1),(12,'Steve','',1),(2,'Peter','Malisisisisisisissisisisisisma',2);
 /*!40000 ALTER TABLE `puntua_caliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -330,8 +330,8 @@ CREATE TABLE `puntua_estable` (
   `calificacion` tinyint NOT NULL,
   KEY `id_usuario` (`id_usuario`),
   KEY `id_pelicula` (`id_pelicula`),
-  CONSTRAINT `puntua_estable_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  CONSTRAINT `puntua_estable_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`)
+  CONSTRAINT `puntua_estable_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `puntua_estable_ibfk_2` FOREIGN KEY (`id_pelicula`) REFERENCES `pelicula` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -341,9 +341,29 @@ CREATE TABLE `puntua_estable` (
 
 LOCK TABLES `puntua_estable` WRITE;
 /*!40000 ALTER TABLE `puntua_estable` DISABLE KEYS */;
-INSERT INTO `puntua_estable` (`id_pelicula`, `id_usuario`, `calificacion`) VALUES (1,6,6),(2,7,8),(3,8,10),(4,9,7),(5,10,3),(15,11,8),(12,12,10),(13,13,5),(14,14,2),(6,15,4),(7,16,9),(8,17,4),(9,18,6),(10,19,1),(11,20,7),(1,1,7),(2,1,7),(3,1,7),(4,1,7),(5,1,7),(6,1,7);
+INSERT INTO `puntua_estable` (`id_pelicula`, `id_usuario`, `calificacion`) VALUES (1,6,6),(2,7,8),(3,8,10),(4,9,7),(5,10,3),(15,11,8),(12,12,10),(13,13,5),(14,14,2),(6,15,4),(7,16,9),(8,17,4),(9,18,6),(10,19,1),(11,20,7),(1,1,7),(2,1,7),(3,1,7),(4,1,7),(5,1,7),(6,1,7),(1,2,25),(1,2,24);
 /*!40000 ALTER TABLE `puntua_estable` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `aumenta_resenias` BEFORE INSERT ON `puntua_estable` FOR EACH ROW BEGIN	
+    
+	declare resenias int;
+    select no_reseñas from usuario where usuario.id = new.id_usuario into resenias;
+    update usuario set no_reseñas= resenias + 1;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Table structure for table `terror`
@@ -392,7 +412,7 @@ CREATE TABLE `usuario` (
   `tipo` varchar(15) NOT NULL,
   `contrasenia` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -401,9 +421,52 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `telefono`, `edad`, `fecha_nacimiento`, `no_reseñas`, `correo`, `tipo`, `contrasenia`) VALUES (1,'Tyler','Bishop','450-289-0463',NULL,'1985-07-14',0,'fulanito@gmail.com','admin','defecto'),(2,'Wayne','Best','764-589-1389',NULL,'1997-02-15',0,'fulanito@gmail.com','admin','defecto'),(3,'Cynthia','Marquez','997-205-3606',NULL,'1983-08-21',0,'fulanito@gmail.com','admin','defecto'),(4,'Byron','Mendez','632-157-5156',NULL,'2003-07-21',0,'fulanito@gmail.com','admin','defecto'),(5,'Baker','Lucas','256-772-6889',NULL,'1977-06-22',0,'fulanito@gmail.com','usuario','defecto'),(6,'Helen','Heath','323-900-6879',NULL,'1975-10-04',0,'fulanito@gmail.com','usuario','defecto'),(7,'Dominic','Gross','765-441-3555',NULL,'2065-08-15',0,'fulanito@gmail.com','usuario','defecto'),(8,'Skyler','Cervantes','662-688-9132',NULL,'1975-02-22',0,'fulanito@gmail.com','usuario','defecto'),(9,'Lynn','Haney','561-198-6423',NULL,'2002-05-24',0,'fulanito@gmail.com','usuario','defecto'),(10,'Allen','Santana','220-182-0703',NULL,'1985-05-21',0,'fulanito@gmail.com','usuario','defecto'),(11,'Chase','Macias','110-956-0866',NULL,'1992-12-21',0,'fulanito@gmail.com','usuario','defecto'),(12,'Cruz','Tucker','792-125-8268',NULL,'1988-08-08',0,'fulanito@gmail.com','usuario','defecto'),(13,'Aquila','Coleman','701-926-3528',NULL,'2000-01-01',0,'fulanito@gmail.com','usuario','defecto'),(14,'Portia','Key','101-309-7285',NULL,'2001-09-15',0,'fulanito@gmail.com','usuario','defecto'),(15,'Zelda','Hyde','820-526-2686',NULL,'2037-10-31',0,'fulanito@gmail.com','usuario','defecto'),(16,'Aidan','Gould','173-257-4667',NULL,'1997-10-22',0,'fulanito@gmail.com','usuario','defecto'),(17,'McKenzie','Battle','425-723-8636',NULL,'1999-08-31',0,'fulanito@gmail.com','usuario','defecto'),(18,'Rowan','Hodges','881-394-7819',NULL,'1984-08-12',0,'fulanito@gmail.com','usuario','defecto'),(19,'Neville','Mccall','502-325-8056',NULL,'2055-11-17',0,'fulanito@gmail.com','usuario','defecto'),(20,'Isaac','Clark','810-326-4601',NULL,'2001-04-17',0,'fulanito@gmail.com','usuario','defecto');
+INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `telefono`, `edad`, `fecha_nacimiento`, `no_reseñas`, `correo`, `tipo`, `contrasenia`) VALUES (1,'Tyler','Bishop','450-289-0463',NULL,'1985-07-14',0,'fulanito@gmail.com','admin','defecto'),(2,'Wayne','Best','764-589-1389',NULL,'1997-02-15',0,'fulanito@gmail.com','admin','defecto'),(3,'Cynthia','Marquez','997-205-3606',NULL,'1983-08-21',0,'fulanito@gmail.com','admin','defecto'),(4,'Byron','Melendez','632-157-5156',NULL,'2003-07-21',0,'fulanito@gmail.com','admin','admin'),(5,'Baker','Lucas','256-772-6889',NULL,'1977-06-22',0,'fulanito@gmail.com','usuario','defecto'),(6,'Helen','Heath','323-900-6879',NULL,'1975-10-04',0,'fulanito@gmail.com','usuario','defecto'),(7,'Dominic','Gross','765-441-3555',NULL,'2065-08-15',0,'fulanito@gmail.com','usuario','defecto'),(8,'Skyler','Cervantes','662-688-9132',NULL,'1975-02-22',0,'fulanito@gmail.com','usuario','defecto'),(9,'Lynn','Haney','561-198-6423',NULL,'2002-05-24',0,'fulanito@gmail.com','usuario','defecto'),(10,'Allen','Santana','220-182-0703',NULL,'1985-05-21',0,'fulanito@gmail.com','usuario','defecto'),(11,'Chase','Macias','110-956-0866',NULL,'1992-12-21',0,'fulanito@gmail.com','usuario','defecto'),(12,'Cruz','Tucker','792-125-8268',NULL,'1988-08-08',0,'fulanito@gmail.com','usuario','defecto'),(13,'Aquila','Coleman','701-926-3528',NULL,'2000-01-01',0,'fulanito@gmail.com','usuario','defecto'),(14,'Portia','Key','101-309-7285',NULL,'2001-09-15',0,'fulanito@gmail.com','usuario','defecto'),(15,'Zelda','Hyde','820-526-2686',NULL,'2037-10-31',0,'fulanito@gmail.com','usuario','defecto'),(16,'Aidan','Gould','173-257-4667',NULL,'1997-10-22',0,'fulanito@gmail.com','usuario','defecto'),(17,'McKenzie','Battle','425-723-8636',NULL,'1999-08-31',0,'fulanito@gmail.com','usuario','defecto'),(18,'Rowan','Hodges','881-394-7819',NULL,'1984-08-12',0,'fulanito@gmail.com','usuario','defecto'),(19,'Neville','Mccall','502-325-8056',NULL,'2055-11-17',0,'fulanito@gmail.com','usuario','defecto'),(20,'Isaac','Clark','810-326-4601',NULL,'2001-04-17',0,'fulanito@gmail.com','usuario','defecto'),(21,'Jose','martinez','4754221',21,'1998-08-08',0,'jg@gmail.com','usuario','contrasena'),(22,'ola','sdasd','4654',23,'1996-08-08',0,'fulanito@gmail.com','admin','ola');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `usuario_trigger` BEFORE INSERT ON `usuario` FOR EACH ROW BEGIN
+    declare age int;
+    
+    SELECT FLOOR( (curdate() - new.fecha_nacimiento ) / 10000 ) into age;
+    
+    SET new.edad = age;
+
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `alter_ego` BEFORE UPDATE ON `usuario` FOR EACH ROW BEGIN	
+	declare resenias int;
+    select no_reseñas from usuario where usuario.id = new.id into resenias;
+    if resenias > 30 then
+		insert into critico(id_usuario,alter_ego) values (new.id,concat(new.id,"Temporal"));
+	end if;
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
 -- Dumping events for database 'cinecut'
@@ -503,9 +566,8 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `agregar_personalidad_actor`(
 nom VARCHAR(25), ap VARCHAR(25), sexo varchar(20), nacim date, orig varchar(30), arq varchar(30))
 BEGIN
-	INSERT INTO personalidad(nombre, apellidos, sexo,fecha_nacimiento)
-	VALUES(nom, ap, sexo, nacim);
-	INSERT INTO guionista(id_personalidad, origen, arquetipo)
+	INSERT INTO personalidad(nombre, apellidos, sexo,fecha_nacimiento) VALUES (nom, ap, sexo, nacim);
+	INSERT INTO actor(id_personalidad, origen, arquetipo)
 	VALUES(LAST_INSERT_ID(), orig, arq);
 	
 END ;;
@@ -687,4 +749,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-27 12:31:02
+-- Dump completed on 2020-05-29  8:41:50
