@@ -1,0 +1,130 @@
+<%- include('partials/_header'); -%>
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <td>No.</td>
+            <td>Nombre</td>
+            <td>Apellidos</td>
+            <td>Sexo</td>
+            <td>Edad</td>
+            <td>Nacimiento</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          <% if (data) { %>
+            <% for(var i = 0; i < data.length; i++) { %>
+              <tr>
+                <td><%= (i + 1) %></td>
+                <td><%= data[i].nombre %></td>
+                <td><%= data[i].apellidos %></td>
+                <td><%= data[i].sexo %></td>
+                <td><%= data[i].edad %></td>
+                <td><%= data[i].fecha_nacimiento %></td>
+                <td>
+                  <form>
+                  <a href="personalidad/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
+                  </form>
+                  <form>
+                  <a href="personalidad/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
+                  </form>
+                </td>
+              </tr>
+            <% } %>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-5">
+      <div class="card-body">
+        <h1>Agregar Guionista</h1>
+        <form action="personalidad/addGui" method="POST">
+          <div class="form-group">
+            <input type="text" name="nom" placeholder="Nombre" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="ap" placeholder="Apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="sexo" placeholder="Sexo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nacim" placeholder="Nacimiento" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="gen" placeholder="Género" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="gui" placeholder="Guión reconocido" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </form>
+        <br>
+        <h1>Agregar Director</h1>
+        <form action="personalidad/addDir" method="POST">
+          <div class="form-group">
+            <input type="text" name="nom" placeholder="Nombre" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="ap" placeholder="Apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="sexo" placeholder="Sexo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nacim" placeholder="Nacimiento" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="genP" placeholder="Género Principal" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="est" placeholder="Estilo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="peliR" placeholder="Película reconocida" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </form>
+        <br>
+        <h1>Agregar Actor</h1>
+        <form action="personalidad/addAct" method="POST">
+          <div class="form-group">
+            <input type="text" name="nom" placeholder="Nombre" class="form-control" autofocus>
+          </div>
+          <div class="form-group">
+            <input type="text" name="ap" placeholder="Apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="sexo" placeholder="Sexo" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="nacim" placeholder="Nacimiento" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="orig" placeholder="Origen" class="form-control">
+          </div>
+          <div class="form-group">
+            <input type="text" name="arq" placeholder="Arquetipo" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary">
+            Guardar
+          </button>
+        </form>
+        <br>
+        <form>
+          <a href="personalidad/participaciones/" class="btn btn-info">Mostrar Participaciones</a>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/_footer'); -%>
