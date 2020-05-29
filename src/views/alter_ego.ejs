@@ -17,7 +17,6 @@
                 <td>Tipo</td>
                 <td>contrasenia</td>
                 <td>alter_ego</td>
-                <td>Acciones</td>
             </tr>
         </thead>
         <tbody>
@@ -37,14 +36,6 @@
                 <% if (data[i].alter_ego!= undefined) { %>
                 <td><%= data[i].alter_ego %></td>
                 <% } %>
-                <td>
-                    <form>
-                        <a href="/update/<%= data[i].id %>" class="btn btn-info">Actualizar</a>
-                    </form>
-                    <form>
-                        <a href="/delete/<%= data[i].id %>" class="btn btn-danger">Borrar</a>
-                    </form>
-                </td>
             </tr>
             <% } %>
             <% } %>

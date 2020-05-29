@@ -28,7 +28,7 @@ app.use(
       password: "password",
       port: 3309,
       dateStrings:true,
-      database: "cinecut",
+      database: "cinecut2",
     },
     "single"
   )

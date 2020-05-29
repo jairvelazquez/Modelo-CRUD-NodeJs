@@ -2,7 +2,7 @@ const controller = {};
 
 controller.list = (req, res) => {
   req.getConnection((err, conn) => {
-    let sql = "select pelicula.nombre,puntua_estable.calificacion,usuario.nombre as nombre_usuario from puntua_estable inner join pelicula on puntua_estable.id_pelicula = pelicula.id inner join usuario on puntua_estable.id_usuario = usuario.id;"
+    let sql = "select pelicula.nombre_p,puntua_estable.calificacion,usuario.nombre as nombre_usuario from puntua_estable inner join pelicula on puntua_estable.id_pelicula = pelicula.id inner join usuario on puntua_estable.id_usuario = usuario.id;"
     conn.query(sql, (err, usuario) => {
       if (err) {
         res.json(err);

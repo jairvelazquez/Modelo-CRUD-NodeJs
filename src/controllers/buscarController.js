@@ -180,18 +180,18 @@ controller.buscaPersonalidad = (req, res) => {
 controller.buscaPuntuaCaliente = (req, res) => {
   let metodoAplicado;
   if (req.body.metodo == "Identificador") {
-    metodoAplicado = "id";
+    metodoAplicado = "puntua_caliente.id_pelicula";
   } else if (req.body.metodo == "Alter Ego") {
-    metodoAplicado = "alter_ego";
+    metodoAplicado = "critico.alter_ego";
   } else if (req.body.metodo == "Calificacion") {
-    metodoAplicado = "calificacion";
+    metodoAplicado = "puntua_caliente.calificacion";
   }
   let sql;
   if (isNaN(req.body.busqueda)) {
     sql =
       "select puntua_caliente.id_pelicula, pelicula.nombre_p as nombre_pelicula, critico.alter_ego, puntua_caliente.comentarios," +
       " puntua_caliente.calificacion from puntua_caliente inner join pelicula on puntua_caliente.id_pelicula = pelicula.id " +
-      "inner join critico on puntua_caliente.alter_ego = critico.alter_ego where" +
+      "inner join critico on puntua_caliente.alter_ego = critico.alter_ego where " +
       metodoAplicado +
       " = '" +
       req.body.busqueda +
